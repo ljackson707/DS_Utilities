@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 
+#------------------------------------------------------------------------------------------------------
+
 def generate_db_url(user, password, host, db_name, protocol = "mysql+pymysql"):
     """
     Utility function for generating database URL
@@ -24,6 +26,8 @@ def generate_db_url(user, password, host, db_name, protocol = "mysql+pymysql"):
         URL in this format:  protocol://user:password@host/db_name
     """
     return f"{protocol}://{user}:{password}@{host}/{db_name}"
+
+#------------------------------------------------------------------------------------------------------
 
 def generate_csv_url(sheet_url):
     """
@@ -49,6 +53,8 @@ def generate_csv_url(sheet_url):
             raise ValueError("sheet_url must contain 'edit#gid' phrase")
     else:
         raise TypeError("sheet_url must be a string")
+        
+#------------------------------------------------------------------------------------------------------
 
 def generate_df(file_name, query="", db_url="", cached=True):
     """
@@ -81,3 +87,5 @@ def generate_df(file_name, query="", db_url="", cached=True):
         df.to_csv(file_name, index=False)
 
     return df
+
+#------------------------------------------------------------------------------------------------------
